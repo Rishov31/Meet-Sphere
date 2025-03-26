@@ -2,15 +2,13 @@ import axios from "axios";
 import httpStatus from "http-status";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import server from "../environment";
+import server from "../environment";
 
 export const AuthContext = createContext({}); //This creates a context (AuthContext) to provide authentication-related data globally.
 
 const client = axios.create({
-    // baseURL: `${server}/api/v1/users`
-    baseURL: "https://localhost:8000/api/v1/users"
+    baseURL: `${server}/api/v1/users`
 })
-
 
 export const AuthProvider = ({ children }) => {  //This component will wrap other components to provide authentication data.
     const authContext = useContext(AuthContext);  //→ Gets current authentication data (if available).
